@@ -2,6 +2,7 @@ package main
 
 import (
 	"discord-finance/config"
+	"discord-finance/handler"
 	"fmt"
 	"os"
 	"os/signal"
@@ -29,7 +30,7 @@ func main() {
 		fmt.Println("err create session", err)
 		return
 	}
-	dg.AddHandler(messageCreate)
+	dg.AddHandler(handler.HandleMessage)
 	dg.Identify.Intents = discordgo.IntentsGuildMessages
 
 	err = dg.Open()
