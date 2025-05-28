@@ -1,6 +1,7 @@
 package main
 
 import (
+	"discord-finance/config"
 	"fmt"
 	"os"
 	"os/signal"
@@ -20,6 +21,8 @@ func main() {
 		return
 	}
 	fmt.Println("token is: ", Token)
+
+	config.InitSupabase()
 
 	dg, err := discordgo.New("Bot " + Token)
 	if err != nil {
